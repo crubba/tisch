@@ -1,0 +1,59 @@
+---
+title: "Introduction to table generation with the tisch package"
+author: "Christian Rubba"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tisch introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+HTML tables are a standard way to display tabular information online. Getting HTML table data into R is fairly straightforward with the `` function of the *tisch* package.
+
+## 1. Getting started: Setting up the tisch object
+wide format *ggplot2*
+casting formula of the *reshape2* package. 
+
+hierarchical table
+
+```{r message=FALSE}
+library(tisch)
+
+tt <- tisch(mm, x1 + x2 ~ x3 + x4)
+```
+
+
+```{r message=FALSE}
+tt
+```
+
+## 2. Convert
+After setting up the tisch object, it is time to convert it into 
+At the moment, *tisch* only provides a converter for LaTeX documents. 
+
+### LaTeX converter
+`to_tex()` function. 
+
+```{r message=FALSE}
+to_tex(tt)
+```
+
+## Annotations
+
+`caption()`, `footnote()` and `label()`
+
+```{r message=FALSE}
+tt <- tt + caption("asd") + footnote("asd") + label("tab:mm")
+to_tex(tt)
+```
+
+## Theming
+
+```{r message=FALSE}
+tt + theme()
+to_tex(tt)
+```
+
+# Outlook
+
