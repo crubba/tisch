@@ -10,6 +10,8 @@ list_get(l, ext, ...)
 \item{l}{the list}
 
 \item{ext}{the index}
+
+\item{...}{addtional arguments}
 }
 \description{
 Extracts elements from a list based on index

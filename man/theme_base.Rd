@@ -6,6 +6,9 @@
 \usage{
 theme_base(...)
 }
+\arguments{
+\item{...}{theme elements}
+}
 \description{
 Basic table theme
 }

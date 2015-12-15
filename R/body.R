@@ -24,24 +24,23 @@ label <- function(str){
   new("tisch_annotation", annotations = label)
 }
 
-#' @export
-tbody <- function(...){
-  
-  args <- dots(...)
-  
-  return(args)
-  
-  body_aes_list <- c("box", "text")
-  not_matched <- setdiff(names(args), body_aes_list)
-  not_matched  <- sprintf("[%s]", paste(not_matched, collapse = ""))
-  
-  warning(sprintf("No %s", not_matched), call. = FALSE)
-  
-  body.args <- args[body_aes_list]
-  # box_args <- eval(box)
-  #new("tisch_adds", x = body_args)
-  return(body.args)
-}
+# tbody <- function(...){
+#   
+#   args <- dots(...)
+#   
+#   return(args)
+#   
+#   body_aes_list <- c("box", "text")
+#   not_matched <- setdiff(names(args), body_aes_list)
+#   not_matched  <- sprintf("[%s]", paste(not_matched, collapse = ""))
+#   
+#   warning(sprintf("No %s", not_matched), call. = FALSE)
+#   
+#   body.args <- args[body_aes_list]
+#   # box_args <- eval(box)
+#   #new("tisch_adds", x = body_args)
+#   return(body.args)
+# }
 
 # fu <- body(
 #   box(fill = rowwise(.) %>% which.max(),
@@ -51,16 +50,16 @@ tbody <- function(...){
 # fu
 
 
-list(
-  textnormal = "\textnormal", 
-  textroman = "\textrm",
-  textsf = "textsf", 
-  texttt = "texttt", 
-  textup = "textup", 
-  textit = "textit", 
-  textsl = "textsl", 
-  textsc = "textsc", 
-  uppercase = "uppercase", 
-  bold = "textbf", 
-  textmd = "textmd", 
-  textlf = "textlf")
+# list(
+#   textnormal = "\textnormal", 
+#   textroman = "\textrm",
+#   textsf = "textsf", 
+#   texttt = "texttt", 
+#   textup = "textup", 
+#   textit = "textit", 
+#   textsl = "textsl", 
+#   textsc = "textsc", 
+#   uppercase = "uppercase", 
+#   bold = "textbf", 
+#   textmd = "textmd", 
+#   textlf = "textlf")

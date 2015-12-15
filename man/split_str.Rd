@@ -4,7 +4,12 @@
 \alias{split_str}
 \title{Split vars}
 \usage{
-split_str(str)
+split_str(str, split)
+}
+\arguments{
+\item{str}{asd}
+
+\item{split}{splitting string}
 }
 \description{
 Split vars

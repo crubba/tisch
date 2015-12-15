@@ -6,6 +6,11 @@
 \usage{
 str1 \%str\% str2
 }
+\arguments{
+\item{str1}{string 1}
+
+\item{str2}{string 2}
+}
 \description{
 Paste two stringr
 }

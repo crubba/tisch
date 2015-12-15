@@ -2,14 +2,25 @@
 % Please edit documentation in R/tex_converter.R
 \name{to_tex}
 \alias{to_tex}
-\title{Converts a tischbase object to LaTeX output}
+\title{Converts a tisch object to LaTeX output}
 \usage{
-to_tex(obj, ...)
+to_tex(obj, position, rotation, split, open, ...)
 }
 \arguments{
-\item{obj}{the tischbase object}
+\item{obj}{the tisch object}
+
+\item{position}{character, position of the table in the page, "t" for top (default), 
+"b" for bottom, "h" for here}
+
+\item{rotation}{numeric, number od degrees for table rotation}
+
+\item{split}{character, style of splitting across multiple pages}
+
+\item{open, }{logical}
+
+\item{...}{additional arguments passed to}
 }
 \description{
-Converts a tischbase object to LaTeX output
+Converts a tisch object to LaTeX output
 }
 

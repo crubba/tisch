@@ -1,21 +1,24 @@
 Package: tisch
-Title: A Formula-Based Table Generator for LaTeX Documents
+Title: Another Table Generator for LaTeX Documents
 Version: 0.1.0
-Authors@R: c(
-    person("Christian", "Rubba", email = "cran@christianrubba.com", role = c("aut", "cre"))
-    )
-Description: tisch provides a formula-based interface for generating tabular
-    outputs for LaTeX documents. The formula interface is based on reshape2's
-    casting function and allows users to assign variables to columns and rows.
-    tisch assand the arrangement of cell values. A theming
-    system gives easy control over aesthetic aspects of the tables.
+Authors@R: person("Christian", "Rubba", email = "r@christianrubba.com",
+    role = c("aut", "cre"))
+Description: The tisch package provides a way for generating LaTeX tables with
+    intrica. It can documents. It provides a formula interface based on reshape2's
+    casting function and allows users to assign variables to columns and rows. tisch
+    assand the arrangement of cell values. A theming system gives easy control over
+    aesthetic aspects of the tables.
 Depends:
     R (>= 3.1.0)
 Imports:
     reshape2,
-    infuser
-Suggests: 
-    broom
-License: MIT
+    infuser,
+    methods,
+    tools,
+    stringr
+Suggests:
+    testthat,
+    knitr
+License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 5.0.0

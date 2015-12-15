@@ -6,6 +6,9 @@
 \usage{
 theme(...)
 }
+\arguments{
+\item{...}{theme elements}
+}
 \description{
 Theming
 }

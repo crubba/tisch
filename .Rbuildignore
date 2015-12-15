@@ -3,4 +3,7 @@
 misc/*
 TODO
 README.*
+
 prepare_datasets.R
+usage.html
+tisch-output.png

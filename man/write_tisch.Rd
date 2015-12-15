@@ -4,12 +4,14 @@
 \alias{write_tisch}
 \title{Write the tisch object to the file system}
 \usage{
-write_tisch(x, filename)
+write_tisch(x, filename, full = FALSE)
 }
 \arguments{
 \item{x}{tisch object}
 
 \item{filename}{a file path string}
+
+\item{full}{logical, should a full tex be written?}
 }
 \description{
 Write the tisch object to the file system

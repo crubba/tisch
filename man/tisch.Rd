@@ -5,12 +5,19 @@
 \title{Create a new tisch object
 tisch initializes a new tisch object. Designate rows and columns via its formula interface.}
 \usage{
-tisch(data, formula, reorder = FALSE, ...)
+tisch(data, formula = NULL, cols = NULL, rows = NULL, sep = "_",
+  reorder = FALSE, ...)
 }
 \arguments{
 \item{data}{a data frame}
 
-\item{formula}{\link[reshape2]{cast}}
+\item{formula}{casting formula, see \link[reshape2]{dcast} for specifics}
+
+\item{cols}{which are the column variables?}
+
+\item{rows}{which are the row variables?}
+
+\item{sep}{if column are composites, what is the separator string?}
 
 \item{reorder}{logical, allow the casting function to reorder the data frame?}
 
@@ -20,16 +27,27 @@ tisch(data, formula, reorder = FALSE, ...)
 Create a new tisch object
 tisch initializes a new tisch object. Designate rows and columns via its formula interface.
 }
+\details{
+There exists two ways of specifying the row and column variables in tisch.
+\itemize{
+ \item{Long data frames}{}
+ \item{Wide data frames}{}
+}
+}
 \examples{
 \dontrun{
-data(asd)
-tt <- tisch(data, asd + asd ~ asd)
+data(tips)
+tips2 <- tips[, c("day", "time", "sex", "smoker", "tip")]
+
+tt <- tisch(tips2, day + time ~ sex + smoker, fun.aggregate = mean)
 to_tex(tt)
 
 tt + caption("asd") + footnote("ASd") +
 theme(asd)
 to_tex(tt)
-
 }
+}
+\seealso{
+\code{\link[reshape2]{dcast}}
 }
 
