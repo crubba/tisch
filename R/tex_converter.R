@@ -141,9 +141,8 @@ to_tex.tisch <- function(obj, position = "tbp", rotation = 0, split = NULL, open
 \\usepackage{booktabs}\n
 \\begin{document}\n%s\n\\end{document}", tab_tex)
     
-    #tmp_dir <- tempdir()
-    #tmp_path <- tempfile(tmpdir = tmp_dir, fileext = ".tex")
-    tmp_path <- "/home/christian/Dropbox/ff/ff.tex"
+    tmp_dir <- tempdir()
+    tmp_path <- tempfile(tmpdir = tmp_dir, fileext = ".tex")
     pdf_path <- paste0(tools::file_path_sans_ext(tmp_path), ".pdf")
     write_tisch(x = full_tex, filename = tmp_path)
     
