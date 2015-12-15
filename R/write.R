@@ -1,7 +1,7 @@
 #' Write the tisch object to the file system
 #' @param x tisch object
 #' @param filename a file path string
-#' @param full logical, should a full tex be written?
+#' @param full logical, should the table be inserted into a complete text file?
 #' @export
 write_tisch <- function(x, filename, full = FALSE){
   
