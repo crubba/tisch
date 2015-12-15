@@ -1,9 +1,10 @@
+
 # A systematic approach to LaTeX tables
 *tisch* allows to convert R data frames into LaTeX tables. Presently, *tisch* provides three advantages over other packages with similiar ambition:
 
-1. Intricate table designs: When the data  hierarchical order in the rows and columns 
+1. Intricate table designs: *tisch* can help you design tables that clearly communicate the hierarchical order in your data
 2. Consistent API: *tisch* provides a succinct DSL for generating tables and manipulating table elements
-3. Theme-based: Theme elements can be 
+3. Theme-based: Aestehtical changed to the table are excercise through a theming function. *tisch* allows themes to be saved and reused for multiple tables.
 
 ## Installation 
 Get the development version from Github: 
