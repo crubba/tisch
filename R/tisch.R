@@ -14,19 +14,20 @@
 #' }
 #' @seealso \code{\link[reshape2]{dcast}}
 #' @examples \dontrun{
-#' data(tips)
-#' tips2 <- tips[, c("day", "time", "sex", "smoker", "tip")]
-#' 
-#' tt <- tisch(tips2, day + time ~ sex + smoker, fun.aggregate = mean)
-#' to_tex(tt)
-#' 
-#' tt + caption("asd") + footnote("ASd") +
-#' theme(asd)
-#' to_tex(tt)
+#' data("browsershares")
+#' tt <- tisch(browsershares, rows = c("Year", "Month"), sep = " >> ") +
+#' theme(
+#'    row_style = ragged(indent = 0.2),
+#'    column_justification = "central",
+#'    text_size = "scriptsize",
+#'    replace_NA = "-"
+#'    ) + 
+#'    caption("Browser market share in 2011-2013") +
+#'    footnote("Note: Information taken from StatCounter.")
 #' }
 #' @export
 #' @import stringr
-tisch <- function(data, formula = NULL, cols = NULL, rows = NULL, sep = "_", reorder = FALSE, ...){
+tisch <- function(data, formula = NULL, cols = NULL, rows = NULL, sep = NULL, reorder = FALSE, ...){
   
   # Catch Dots
   #dots <- list(...)

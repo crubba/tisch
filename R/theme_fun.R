@@ -11,9 +11,12 @@ full <- function(){
     body_str <- lapply(1:nrow(df), function(i) paste(as.character(df[i,]), collapse = " & "))
     Reduce_paste <- function(vec1, vec2) paste(vec1, vec2, sep = " \\\\\\\\\\ \n\t")
     df <- Reduce(Reduce_paste, body_str)
-    
+
+    # -----------
+    # Construct struc    
     struc$body <- df
     struc$header$row.length <- length(struc$rows$names)
+    
     
     return(struc)
   }
@@ -74,7 +77,7 @@ ragged <- function(indent = 0.25){
     rownames <- head(struc$rows$names, -1)
     
     if(length(rownames) < 1){
-      stop("To apply ragged row style need at least two row variables.", call. = FALSE)
+      stop("Cannot apply ragged row style to univariate row dimension.", call. = FALSE)
     }
     
     body <- lapply(seq_along(rownames), function(i){
@@ -83,7 +86,7 @@ ragged <- function(indent = 0.25){
       
       each_row_df <- lapply(seq_along(split_df), function(ii){
         df <- split_df[[ii]]
-        df <- df[, !(colnames(df) %in% rownames[i])]
+        df <- df[, !(colnames(df) %in% rownames[i]), drop = FALSE]
         indentstr <- sprintf("\\\\hspace*{%.2fcm}", i*indent_)
         df[,1] <- paste(indentstr, df[,1])
         df <- rbind("", df)
@@ -115,27 +118,26 @@ ragged <- function(indent = 0.25){
 
 
 #' Create a spanend row style
-#' @param which  asd
-#' @param ... additional arguments passed to nowehere
+#' @param h.offset numerical, the vertical offset between grouped rows in cm
 #' @export
-spanned <- function(which = 1, ...){
+spanned <- function(h.offset = 0.1){
   
-  dots <- list(...)
+  #dots <- list(...)
   
-  function(struc){
+  function(struc, h.offset_in = h.offset){
     
     body <- struc$body
     rownames <- head(struc$rows$names, -1)
     
-    body <- lapply(seq_along(rownames), function(i){
+    df <- lapply(seq_along(rownames), function(i){
       unique.vals <- unique(body[, rownames[i]])
       hoho <- split(body, ordered(body[, rownames[i]], levels = unique.vals))
       
       sos <- lapply(seq_along(hoho), function(ii){
         df <- hoho[[ii]]
-        df <- df[, !(colnames(df) %in% rownames[i])]
+        df <- df[, !(colnames(df) %in% rownames[i]), drop = FALSE]
         span.length <- ncol(df)
-        span.str <- sprintf("\\\\rule{0pt}{14pt}\\\\multicolumn{%s}{c}{%s}", span.length, names(hoho)[ii])
+        span.str <- sprintf("\\\\multicolumn{%s}{c}{\\\\textbf{%s}}", span.length, names(hoho)[ii])
         
         # --------
         # Construct body
@@ -145,18 +147,22 @@ spanned <- function(which = 1, ...){
         Reduce_paste <- function(vec1, vec2) paste(vec1, vec2, sep = " \\\\\\\\\\ \n\t")
         df <- Reduce(Reduce_paste, body_str)
         
-        # -----------
-        # Construct struc
-        struc$body <- df
-        struc$header$row.length <- 0
+        # Horizontal offset
+#         offset_str <- sprintf("[%scm]", h.offset_in)
+#         df <- paste0(df, offset_str)
         
-        return(struc)
+        return(df)
       })
       
       paste(unlist(sos), collapse = "\\\\\\\\\\ \n\t")
     })
     
-    return(body[[1]])
+    # -----------
+    # Construct struc
+    struc$body <- df
+    struc$header$row.length <- length(struc$rows$names)-1
+    
+    return(struc) #body[[1]]
   }
   
 }

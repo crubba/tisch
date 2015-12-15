@@ -11,7 +11,7 @@ write_tisch(x, filename, full = FALSE)
 
 \item{filename}{a file path string}
 
-\item{full}{logical, should a full tex be written?}
+\item{full}{logical, should the table be inserted into a complete text file?}
 }
 \description{
 Write the tisch object to the file system

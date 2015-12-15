@@ -25,15 +25,12 @@ theme <- function(...){
 theme_base <- function(...){
   
   theme_list <- list(
-    row_style = full(), #steprow(indent = 0.25),
+    row_style = loose(),
     column_style = hierarchical(),
     column_justification = "central",
-    column_width = "loose",
+    column_width = NULL,
     text_size = "normal",
-    replace_NA = "",
-    footer_font_size = "11",
-    foot_font = "bold",
-    midrule = c("a", "b")
+    replace_NA = ""
     )
 }
 

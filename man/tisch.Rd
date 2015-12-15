@@ -5,7 +5,7 @@
 \title{Create a new tisch object
 tisch initializes a new tisch object. Designate rows and columns via its formula interface.}
 \usage{
-tisch(data, formula = NULL, cols = NULL, rows = NULL, sep = "_",
+tisch(data, formula = NULL, cols = NULL, rows = NULL, sep = NULL,
   reorder = FALSE, ...)
 }
 \arguments{
@@ -36,15 +36,16 @@ There exists two ways of specifying the row and column variables in tisch.
 }
 \examples{
 \dontrun{
-data(tips)
-tips2 <- tips[, c("day", "time", "sex", "smoker", "tip")]
-
-tt <- tisch(tips2, day + time ~ sex + smoker, fun.aggregate = mean)
-to_tex(tt)
-
-tt + caption("asd") + footnote("ASd") +
-theme(asd)
-to_tex(tt)
+data("browsershares")
+tt <- tisch(browsershares, rows = c("Year", "Month"), sep = " >> ") +
+theme(
+   row_style = ragged(indent = 0.2),
+   column_justification = "central",
+   text_size = "scriptsize",
+   replace_NA = "-"
+   ) + 
+   caption("Browser market share in 2011-2013") +
+   footnote("Note: Information taken from StatCounter.")
 }
 }
 \seealso{

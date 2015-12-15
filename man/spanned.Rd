@@ -4,12 +4,10 @@
 \alias{spanned}
 \title{Create a spanend row style}
 \usage{
-spanned(which = 1, ...)
+spanned(h.offset = 0.1)
 }
 \arguments{
-\item{which}{asd}
-
-\item{...}{additional arguments passed to nowehere}
+\item{h.offset}{numerical, the vertical offset between grouped rows in cm}
 }
 \description{
 Create a spanend row style

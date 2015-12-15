@@ -76,7 +76,7 @@ to_tex.tisch <- function(obj, position = "tbp", rotation = 0, split = NULL, open
   header.length <- length(rev(obj@struc$cols$vals)[[1]])
   header_dim_str <- paste(replicate(header.length, coljus, simplify = T), collapse = "")
   header_dim_str <- paste(header_dim_str, collapse = "") #rep("c", header.length)
-  row_dim_str <- paste(rep("l", length(obj@struc$header$row.length)), collapse = "")
+  row_dim_str <- paste(rep("l", times = obj@struc$header$row.length), collapse = "")
   obj@struc$header$dim_str <- paste(row_dim_str, header_dim_str, sep = "")
   
   # ------
@@ -92,8 +92,9 @@ to_tex.tisch <- function(obj, position = "tbp", rotation = 0, split = NULL, open
     \\\\end{tablenotes}", footnote), "")
   
   text_size <- theme$text_size
-  
-  table_position = sprintf("[%s]", position)
+  tex_font_sizes <- c("tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", 
+                      "Large", "LARGE", "huge", "Huge")
+  if(!(text_size %in% tex_font_sizes)) stop("Unknown font size", call. = FALSE)
   
   # Caption
   caption <- annotations$caption
@@ -105,9 +106,12 @@ to_tex.tisch <- function(obj, position = "tbp", rotation = 0, split = NULL, open
   
   
   # ----------
-  # Assemble the TeX Code
+  # Latex specific
+  table_position = sprintf("[%s]", position)
+  
   # ----------
-  #\\rowcolors{1}{green}{pink}
+  # Assemble the TeX Code
+  
   tex_template <- "
 \\begin{table}{{table_position}}\\begin{threeparttable}\\{{text_size}}
 \t{{caption}}{{label}}
