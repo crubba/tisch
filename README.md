@@ -1,10 +1,10 @@
 
-# A systematic approach to presentation tables
+# tisch
 *tisch* allows to convert R data frames into LaTeX tables. Presently, *tisch* provides three advantages over other packages with similiar ambition:
 
 1. Intricate table designs: *tisch* can help you design tables that clearly communicate the hierarchical structure in your data.
 2. Consistent API: *tisch* provides a succinct DSL for generating tables and manipulating table elements.
-3. Theme-based: Aestethical changes to the table are excercised through a theming function. *tisch* allows themes to be saved and reused for multiple tables.
+3. Theme-based: Aestethical changes to the table are excercised through a theming function. *tisch* allows (will allow) themes to be saved and reused for multiple tables.
 
 ## Installation 
 Get the development version from Github: 
